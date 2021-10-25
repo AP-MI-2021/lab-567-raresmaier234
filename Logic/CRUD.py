@@ -1,4 +1,4 @@
-from Domain.obiect import creeazaObiect, getId
+from Domain.obiect import creeazaObiect, getId, getLocation
 
 
 def addObject(id, nume, descriere, pret, locatie, lista):
@@ -18,13 +18,25 @@ def addObject(id, nume, descriere, pret, locatie, lista):
 
 def getById(id, lista):
     """
-    Va cauta in lista, obiectul dat de utilizator
+    Va cauta in lista, obiectul dat de utilizator in functie de id
     :param id: string
     :param lista: list
     :return: obiectul in functie de id-ul dat de utilizator, din lista
     """
     for obiect in lista:
         if getId(obiect) == id:
+            return obiect
+
+
+def getByLocation(location, lista):
+    """
+
+    :param location:
+    :param lista:
+    :return:
+    """
+    for obiect in lista:
+        if getLocation(obiect) == location:
             return obiect
 
 
