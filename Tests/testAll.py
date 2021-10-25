@@ -8,3 +8,4 @@ def runAllTests():
     testAddObject()
     testDeleteObject()
     testModifyObject()
+    testMoveObject()
