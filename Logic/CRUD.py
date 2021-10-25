@@ -18,7 +18,7 @@ def addObject(id, nume, descriere, pret, locatie, lista):
 
 def getById(id, lista):
     """
-    Va cauta in lista, obiectul dat de utilizator in functie de id
+    Va cauta in lista obiectul cu de id-ul dat de utilizator.
     :param id: string
     :param lista: list
     :return: obiectul in functie de id-ul dat de utilizator, din lista
@@ -30,10 +30,10 @@ def getById(id, lista):
 
 def getByLocation(location, lista):
     """
-
-    :param location:
-    :param lista:
-    :return:
+    Va cauta in lista obiectul cu locatia data de utilizator.
+    :param location: string
+    :param lista: list
+    :return: obiectul in functie de locatia data de utilizator
     """
     for obiect in lista:
         if getLocation(obiect) == location:
