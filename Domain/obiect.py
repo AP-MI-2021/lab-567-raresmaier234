@@ -1,6 +1,6 @@
 def creeazaObiect(id, nume, descriere, pret, locatie):
     """
-    creeaza un dictionar ce reprezinta un obiect
+    creeaza o lista ce reprezinta un obiect
     :param id: string
     :param nume: string
     :param descriere: string
