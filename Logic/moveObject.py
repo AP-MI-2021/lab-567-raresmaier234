@@ -11,19 +11,13 @@ def moveObject(locatie, unde_locatie, lista):
     :param lista: list
     :return: lista noua, cu modificarile aferente.
     """
+    """
     newList = []
     for obiect in lista:
         if getLocation(obiect) == locatie:
             newLocation = unde_locatie
-            newList.append(
-                {
-                    "id": getId(obiect),
-                    "nume": getName(obiect),
-                    "descriere": getDescription(obiect),
-                    "pret": getPrice(obiect),
-                    "locatie": newLocation
-                }
-            )
+            newList.append([])
         else:
             newList.append(obiect)
     return newList
+    """

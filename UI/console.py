@@ -8,7 +8,6 @@ def printMenu ():
     print("2. Stergere obiect.")
     print("3. Modificare obiect.")
     print("4. Afisare obiecte.")
-    print("5. Modificare locatie a obiectelor.")
     print("x. Iesire")
 
 
@@ -57,8 +56,6 @@ def runUI(lista):
             lista = uiModifyObject(lista)
         elif optiune == "4":
             showAll(lista)
-        elif optiune == "5":
-            lista = uiNewLocationObject(lista)
         elif optiune == "x":
             break
         else:
