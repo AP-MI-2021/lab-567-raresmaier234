@@ -12,6 +12,8 @@ def addObject(id, nume, descriere, pret, locatie, lista):
     :param lista: list
     :return: lista cu toate obiectele din depozit, dupa adaugare
     """
+    if getById(id, lista) is not None:
+        raise ValueError("id-ul exista deja!")
     obiect = creeazaObiect(id, nume, descriere, pret, locatie)
     return lista + [obiect]
 
@@ -47,6 +49,8 @@ def deleteObject(id, lista):
     :param lista: list
     :return: lista de obiecte dupa sterge
     """
+    if getById(id, lista) is None:
+        raise ValueError("Obiectul pe care doresti sa-l stergi nu exista!")
     return [obiect for obiect in lista if getId(obiect) != id]
 
 
