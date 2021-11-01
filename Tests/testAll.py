@@ -11,4 +11,3 @@ def runAllTests():
     testModifyObject()
     testMoveObject()
     test_listLocation()
-    test_maxObjectPrice()
