@@ -12,6 +12,10 @@ def addObject(id, nume, descriere, pret, locatie, lista):
     :param lista: list
     :return: lista cu toate obiectele din depozit, dupa adaugare
     """
+    if getPrice(lista) < 0:
+        raise ValueError("Pretul trebuie sa fie pozitiv")
+    if getId(lista) is None:
+        raise ValueError("Nu ai introdus nici un nume!")
     if getById(id, lista) is not None:
         raise ValueError("Acest id exista deja!")
     obiect = creeazaObiect(id, nume, descriere, pret, locatie)
