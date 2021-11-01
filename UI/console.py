@@ -1,5 +1,6 @@
-from Domain.obiect import toString
+from Domain.obiect import toString, getLocation
 from Logic.CRUD import addObject, deleteObject, modifyObject
+from Logic.maxObjectPrice import maxObjectPrice, listLocation
 from Logic.moveObject import moveObject
 
 
@@ -9,6 +10,7 @@ def printMenu ():
     print("3. Modificare obiect.")
     print("4. Afisare obiecte.")
     print("5. Modificare locatie a obiectelor.")
+    print("6. Determinarea pretului maxim al unui obiect din depozit.")
     print("x. Iesire")
 
 
@@ -41,6 +43,13 @@ def uiNewLocationObject(lista):
     return moveObject(locatie, nouaLocatie, lista)
 
 
+def uiMaxPriceObj(lista):
+    listLocations = listLocation(lista)
+    listPrices = maxObjectPrice(lista)
+    for obiect in range(0, len(listLocations)):
+        print(listLocations[obiect], ":", listPrices[obiect])
+
+
 def showAll(lista):
     for obiect in lista:
         print(toString(obiect))
@@ -60,6 +69,8 @@ def runUI(lista):
             showAll(lista)
         elif optiune == "5":
             lista = uiNewLocationObject(lista)
+        elif optiune == "6":
+            uiMaxPriceObj(lista)
         elif optiune == "x":
             break
         else:

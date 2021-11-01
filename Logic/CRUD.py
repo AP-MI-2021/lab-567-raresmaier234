@@ -1,4 +1,4 @@
-from Domain.obiect import creeazaObiect, getId, getLocation
+from Domain.obiect import creeazaObiect, getId, getLocation, getPrice
 
 
 def addObject(id, nume, descriere, pret, locatie, lista):
