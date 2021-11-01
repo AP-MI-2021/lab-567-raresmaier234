@@ -13,7 +13,7 @@ def addObject(id, nume, descriere, pret, locatie, lista):
     :return: lista cu toate obiectele din depozit, dupa adaugare
     """
     if getById(id, lista) is not None:
-        raise ValueError("id-ul exista deja!")
+        raise ValueError("Acest id exista deja!")
     obiect = creeazaObiect(id, nume, descriere, pret, locatie)
     return lista + [obiect]
 
