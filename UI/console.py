@@ -1,7 +1,10 @@
 from Domain.obiect import toString, getLocation
 from Logic.CRUD import addObject, deleteObject, modifyObject
+from Logic.concatenate import concatenateDescription
 from Logic.maxObjectPrice import maxObjectPrice, listLocation
 from Logic.moveObject import moveObject
+from Logic.priceSort import sortPrices
+from Logic.sumPrices import sumPrices
 
 
 def printMenu ():
@@ -11,6 +14,10 @@ def printMenu ():
     print("4. Afisare obiecte.")
     print("5. Modificare locatie a obiectelor.")
     print("6. Determinarea pretului maxim al unui obiect din depozit.")
+    print("7. Ordonarea obiectelor crescător după prețul de achiziție.")
+    print("8. Afișarea sumelor prețurilor pentru fiecare locație.")
+    print("9. Concatenarea unui string citit la toate descrierile obiectelor cu prețul"
+          "  mai mare decât o valoare citită.")
     print("x. Iesire")
 
 
@@ -50,6 +57,23 @@ def uiMaxPriceObj(lista):
         print(listLocations[obiect], ":", listPrices[obiect])
 
 
+def uiSortPrices(lista):
+    rezultat = sortPrices(lista)
+    showAll(rezultat)
+
+
+def uiSumPrices(lista):
+    rezultat = sumPrices(lista)
+    for location in rezultat:
+        print(location, ":", rezultat[location])
+
+
+def uiConcatenateDescription(lista):
+    description = input("Scrieti descrierea: ")
+    pret = float(input("Dati valoarea: "))
+    showAll(concatenateDescription(lista, pret, description))
+
+
 def showAll(lista):
     for obiect in lista:
         print(toString(obiect))
@@ -71,6 +95,12 @@ def runUI(lista):
             lista = uiNewLocationObject(lista)
         elif optiune == "6":
             uiMaxPriceObj(lista)
+        elif optiune == "7":
+            uiSortPrices(lista)
+        elif optiune == "8":
+            uiSumPrices(lista)
+        elif optiune == "9":
+            uiConcatenateDescription(lista)
         elif optiune == "x":
             break
         else:

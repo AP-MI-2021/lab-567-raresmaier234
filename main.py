@@ -7,7 +7,7 @@ from UI.console import runUI
 def main():
     runAllTests()
     lista = []
-    menu(lista)
+    runUI(lista)
 
 
 if __name__ == '__main__':
