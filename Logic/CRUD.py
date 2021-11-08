@@ -14,8 +14,10 @@ def addObject(id, nume, descriere, pret, locatie, lista):
     """
     if getById(id, lista) is not None:
         raise ValueError("Id-ul exista deja!")
-    if len(locatie) != 4:
-        raise ValueError("Acest id exista deja!")
+    if len(locatie) > 4:
+        raise ValueError("Locatia trebuie sa continta cel mult 4 caractere!")
+    if len(locatie) == 0:
+        raise ValueError("Locatia nu poate fi nula!")
     obiect = creeazaObiect(id, nume, descriere, pret, locatie)
     return lista + [obiect]
 
@@ -71,6 +73,10 @@ def modifyObject(id, nume, descriere, pret, locatie, lista):
     for obiect in lista:
         if getId(obiect) == id:
             obiectNou = creeazaObiect(id, nume, descriere, pret, locatie)
+            if len(getLocation(obiectNou)) > 4:
+                raise ValueError("Locatia trebuie sa continta cel mult 4 caractere!")
+            if pret < 0:
+                raise ValueError("Pretul trebuie sa fie pozitiv!")
             listaNoua.append(obiectNou)
         else:
             listaNoua.append(obiect)

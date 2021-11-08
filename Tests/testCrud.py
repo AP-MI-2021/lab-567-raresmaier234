@@ -50,14 +50,3 @@ def testModifyObject():
     assert getPrice(outdatedObj) == 2
     assert getLocation(outdatedObj) == "Zara"
 
-    lista = []
-    lista = addObject("2", "cana", "cafea", 13, "ccc", lista)
-
-    lista = modifyObject("3", "ibric", "metal", 10, "ccc", lista)
-
-    outdatedObj = getById("3", lista)
-    assert getId(outdatedObj) == "3"
-    assert getName(outdatedObj) == "cana"
-    assert getDescription(outdatedObj) == "cafea"
-    assert getPrice(outdatedObj) == 13
-    assert getLocation(outdatedObj) == "ccc"

@@ -5,12 +5,12 @@ from Logic.moveObject import moveObject
 
 def testMoveObject():
     lista = []
-    lista = addObject("1", "cana", "cafea", 13, "Auchan", lista)
-    lista = addObject("2", "pahar", "plastic", 2, "MegaImage", lista)
+    lista = addObject("1", "cana", "cafea", 13, "dm", lista)
+    lista = addObject("2", "pahar", "plastic", 2, "c&a", lista)
 
-    nouaLocatie = "Carrefour"
-    locatie = "Auchan"
+    nouaLocatie = "c&a"
+    locatie = "dm"
     lista = moveObject(locatie, nouaLocatie, lista)
-    locatie = getByLocation("Carrefour", lista)
+    locatie = getByLocation("c&a", lista)
 
-    assert getLocation(locatie) == "Carrefour"
+    assert getLocation(locatie) == "c&a"

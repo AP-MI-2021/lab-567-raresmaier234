@@ -7,6 +7,7 @@ def ShowAll(lista):
     for obiect in lista:
         print(toString(obiect))
 
+
 def menu(lista):
     while True:
         mesaj = input()

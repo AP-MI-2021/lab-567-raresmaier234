@@ -1,5 +1,5 @@
-from Domain.obiect import creeazaObiect
-from Logic.CRUD import addObject
+from Domain.obiect import creeazaObiect, getLocation, getPrice
+from Logic.CRUD import addObject, getByLocation, getById
 from Logic.maxObjectPrice import listLocation, maxObjectPrice
 
 
@@ -56,8 +56,9 @@ def test_maxObjectPrice():
     lista = addObject(id, nume, descriere, pret, locatie, lista)
 
     lista = addObject("4", "laptop", "gaming", 8000, "eMAG", lista)
-
-    assert maxObjectPrice("Cora") == 60
-    assert maxObjectPrice("Lidl") == 40
-    assert maxObjectPrice("eMAG") == 8000
+    rez = maxObjectPrice(lista)
+    assert len(rez) == 3
+    assert rez[0] == 40
+    assert rez[1] == 60
+    assert rez[2] == 8000
 

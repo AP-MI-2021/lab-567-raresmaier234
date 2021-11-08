@@ -15,6 +15,8 @@ def moveObject(locatie, unde_locatie, lista):
     for obiect in lista:
         if getLocation(obiect) == locatie:
             newLocation = unde_locatie
+            if len(newLocation) > 4:
+                raise ValueError("Noua locatie trebuie sa aibe cel mult 4 caractere!")
             obiect[4] = newLocation
             newList.append(obiect)
         else:

@@ -12,6 +12,8 @@ def concatenateDescription (lista, pret, descriere):
     """
     rezultat = []
     for obiect in lista:
+        if pret < 0:
+            raise ValueError("Valoarea citita trebuie sa fie pozitiva!")
         if getPrice(obiect) < pret:
             rezultat.append(creeazaObiect(getId(obiect), getName(obiect), getDescription(obiect) + descriere,
                                             getPrice(obiect), getLocation(obiect)))
