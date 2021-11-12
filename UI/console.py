@@ -5,19 +5,20 @@ from Logic.maxObjectPrice import maxObjectPrice, listLocation
 from Logic.moveObject import moveObject
 from Logic.priceSort import sortPrices
 from Logic.sumPrices import sumPrices
+from UI.command import menu
 
 
 def printMenu ():
     print("1. Adaugare obiect.")
     print("2. Stergere obiect.")
     print("3. Modificare obiect.")
-    print("4. Afisare obiecte.")
-    print("5. Modificare locatie a obiectelor.")
-    print("6. Determinarea pretului maxim al unui obiect din depozit.")
-    print("7. Ordonarea obiectelor crescător după prețul de achiziție.")
-    print("8. Afișarea sumelor prețurilor pentru fiecare locație.")
-    print("9. Concatenarea unui string citit la toate descrierile obiectelor cu prețul"
+    print("4. Modificare locatie a obiectelor.")
+    print("5. Determinarea pretului maxim al unui obiect din depozit.")
+    print("6. Ordonarea obiectelor crescător după prețul de achiziție.")
+    print("7. Afișarea sumelor prețurilor pentru fiecare locație.")
+    print("8. Concatenarea unui string citit la toate descrierile obiectelor cu prețul"
           "  mai mare decât o valoare citită.")
+    print("a. Afisare obiecte.")
     print("u. Undo.")
     print("r. Redo.")
     print("x. Iesire.")
@@ -67,44 +68,43 @@ def uiModifyObject(lista, undoList, redoList):
         return lista
 
 
-def uiNewLocationObject(lista, undoList):
+def uiNewLocationObject(lista, undoList, redoList):
     try:
         locatie = input("Da-ti locatia curenta a obiectelor: ")
         nouaLocatie = input("Da-ti locatia unde doriti sa fie mutate obiectele: ")
         rez = moveObject(locatie, nouaLocatie, lista)
         undoList.append(lista)
+        redoList.clear()
         return rez
     except ValueError as ve:
         print("Eroare: {}".format(ve))
         return lista
 
 
-def uiMaxPriceObj(lista, undoList):
+def uiMaxPriceObj(lista):
     listLocations = listLocation(lista)
     listPrices = maxObjectPrice(lista)
-    undoList.append(lista)
     for obiect in range(0, len(listLocations)):
         print(listLocations[obiect], ":", listPrices[obiect])
 
 
-def uiSortPrices(lista, undoList):
+def uiSortPrices(lista):
     rezultat = sortPrices(lista)
-    undoList.append(lista)
     showAll(rezultat)
 
 
-def uiSumPrices(lista, undoList):
+def uiSumPrices(lista):
     rezultat = sumPrices(lista)
-    undoList.append(lista)
     for location in rezultat:
         print(location, ":", rezultat[location])
 
 
-def uiConcatenateDescription(lista, undoList):
+def uiConcatenateDescription(lista, undoList, redoList):
     try:
         description = input("Scrieti descrierea: ")
         pret = float(input("Dati valoarea: "))
         undoList.append(lista)
+        redoList.append(concatenateDescription(lista, pret, description))
         showAll(concatenateDescription(lista, pret, description))
     except ValueError as ve:
         print("Eroare: {}".format(ve))
@@ -129,17 +129,17 @@ def runUI(lista):
         elif optiune == "3":
             lista = uiModifyObject(lista, undoList, redoList)
         elif optiune == "4":
-            showAll(lista)
+            lista = uiNewLocationObject(lista, undoList, redoList)
         elif optiune == "5":
-            lista = uiNewLocationObject(lista, undoList)
+            uiMaxPriceObj(lista)
         elif optiune == "6":
-            uiMaxPriceObj(lista, undoList)
+            uiSortPrices(lista)
         elif optiune == "7":
-            uiSortPrices(lista, undoList)
+            uiSumPrices(lista)
         elif optiune == "8":
-            uiSumPrices(lista, undoList)
-        elif optiune == "9":
-            uiConcatenateDescription(lista, undoList)
+            uiConcatenateDescription(lista, undoList, redoList)
+        elif optiune == "a":
+            showAll(lista)
         elif optiune == "u":
             if len(undoList) > 0:
                 redoList.append(lista)

@@ -3,11 +3,6 @@ from Logic.CRUD import addObject, modifyObject, deleteObject
 from UI.console import showAll
 
 
-def ShowAll(lista):
-    for obiect in lista:
-        print(toString(obiect))
-
-
 def menu(lista):
     while True:
         mesaj = input()
@@ -30,7 +25,7 @@ def menu(lista):
                         except ValueError as ve:
                             print("Eroare : {}".format(ve))
                     elif camp[0] == "Showall":
-                        ShowAll(lista)
+                        showAll(lista)
                     elif camp[0] == "Update":
                         lista = modifyObject(camp[1], camp[2], camp[3], camp[4], camp[5], lista)
                     elif camp[0] == "Delete":
