@@ -1,4 +1,4 @@
-from Domain.obiect import getLocation, getPrice, getDescription, getName, getId
+from Domain.obiect import getLocation, getPrice, getDescription, getName, getId, creeazaObiect
 from Logic.CRUD import modifyObject, getByLocation
 
 
@@ -14,11 +14,13 @@ def moveObject(locatie, unde_locatie, lista):
     """
     rez = []
     for obiect in lista:
-        if getLocation(obiect) == locatie:
-            locatie = unde_locatie
-            if len(locatie) > 4:
-                raise ValueError("Noua locatie trebuie sa aibe cel mult 4 caractere!")
-            rez = modifyObject(getId(obiect), getName(obiect), getDescription(obiect), getPrice(obiect), locatie, lista)
+        if getLocation(obiect) != locatie:
+            rez.append(obiect)
         else:
-            rez = obiect
+            id = getId(obiect)
+            nume = getName(obiect)
+            descriere = getDescription(obiect)
+            pret = getPrice(obiect)
+            obiect = creeazaObiect(id, nume, descriere, pret, unde_locatie)
+            rez.append(obiect)
     return rez

@@ -5,7 +5,6 @@ from Logic.maxObjectPrice import maxObjectPrice, listLocation
 from Logic.moveObject import moveObject
 from Logic.priceSort import sortPrices
 from Logic.sumPrices import sumPrices
-from UI.command import menu
 
 
 def printMenu ():
